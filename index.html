@@ -4,25 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Image Editor - Workshop 3</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+        }
+        .header {
+            border: 1px solid #00ff00;
+            padding: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .user-tag { font-weight: bold; }
+        
+        .main-container {
+            display: flex;
+            gap: 20px;
+            height: 500px;
+        }
+
+        /* Left Side: Controls */
+        .controls {
+            flex: 1;
+            border: 1px solid #00ff00;
+            padding: 20px;
+        }
+        
+        /* Right Side: The Result Comparison */
+        .results-area {
+            flex: 1.5;
+            border: 1px solid #00ff00;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-comparison {
+            display: flex;
+            gap: 10px;
+            height: 100%;
+            margin-top: 10px;
+        }
+
+        .img-box {
+            flex: 1;
+            border: 1px dashed #00ff00;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #051a05;
+        }
+        
+        .img-label {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 5px;
+        }
+
+        input, button, textarea {
+            background: #000;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-family: inherit;
+        }
+        button:hover { background: #00ff00; color: #000; cursor: pointer; }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1> ImageEditor@Mahi56</h1>
-        <div class="step-box">
-            <h3>Step 1 - Create a mask on your image</h3>
-            <input type="file" id="upload">
+
+    <div class="header">
+        <div class="user-tag">ImageEditor@Mahi56</div>
+        <div>Status: <span style="color: #00ff00">Connected to Bedrock</span></div>
+    </div>
+
+    <div class="main-container">
+        <div class="controls">
+            <h3>Step 1: Upload Source</h3>
+            <input type="file">
+            
+            <h3>Step 2: Prompt</h3>
+            <textarea rows="4">A futuristic cyberpunk city with flying cars and neon lights</textarea>
+            
+            <button>Generate Edit</button>
+            
+            <div style="margin-top: 20px; font-size: 0.8em; opacity: 0.8;">
+                > Connecting to AWS Lambda...<br>
+                > Invoking Titan Image Generator...<br>
+                > Success.
+            </div>
         </div>
-        <div class="step-box">
-            <h3>Step 2 - Write your prompt</h3>
-            <textarea placeholder="Describe your edit..."></textarea>
-            <button onclick="submitJob()">Send to API</button>
-        </div>
-        <div class="result-box">
-            <h3>Step 3 - View Result</h3>
-            <div id="output-image"></div>
+
+        <div class="results-area">
+            <h3>Step 3: Output Comparison</h3>
+            <div class="image-comparison">
+                <div class="img-box">
+                    <span class="img-label">BEFORE (Original)</span>
+                    <div style="font-size: 50px;">📷</div>
+                </div>
+                <div class="img-box">
+                    <span class="img-label">AFTER (AI Edited)</span>
+                    <div style="font-size: 50px;">✨</div>
+                </div>
+            </div>
+            <button style="margin-top: 10px; width: auto;">Download Result</button>
         </div>
     </div>
-    <script src="script.js"></script>
+
 </body>
 </html>
