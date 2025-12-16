@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Editor - Workshop 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1> ImageEditor@Mahi56</h1>
+        <div class="step-box">
+            <h3>Step 1 - Create a mask on your image</h3>
+            <input type="file" id="upload">
+        </div>
+        <div class="step-box">
+            <h3>Step 2 - Write your prompt</h3>
+            <textarea placeholder="Describe your edit..."></textarea>
+            <button onclick="submitJob()">Send to API</button>
+        </div>
+        <div class="result-box">
+            <h3>Step 3 - View Result</h3>
+            <div id="output-image"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
